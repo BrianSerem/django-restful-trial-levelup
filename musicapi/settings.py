@@ -1,4 +1,5 @@
 import os
+from decouple import config, Csv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -8,12 +9,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'p)@jd1g!#srfk3^wf@0z0(!3k)32@(*_jhir5o9d(c)-ii3$&_'
+SECRET_KEY = config('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+
 
 
 # Application definition
@@ -62,15 +62,16 @@ WSGI_APPLICATION = 'musicapi.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'musicapi1' ,
-        'USER': 'brian',
-        'PASSWORD': 'idfwu8080' ,
-        'HOST': 'localhost',
-        'PORT':''
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DB_NAME', default = 'legion_backend'),
+        'USER': config('DB_USER', default = 'legion'),
+        'PASSWORD': config('DB_PASSWORD', default = '&L3g10n'),
+        'HOST': config('DB_HOST'),
+        'PORT': '',
     }
 }
 
