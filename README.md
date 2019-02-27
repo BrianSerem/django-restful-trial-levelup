@@ -28,10 +28,10 @@ Authors Haven app can by:
 ### STEP 4:
     Run the app according to the environment you need:
 
-  ####Development environment:
+  ⋅⋅*Development environment:
     `python manage.py runserver --settings=authors.settings.dev`
 
-  ####Testing environment:
+  ⋅⋅*Testing environment:
     `python manage.py tests --settings=authors.settings.test`
 
 ## API Spec
