@@ -20,3 +20,4 @@ __pycache__/
 *.air
 *.ipa
 *.apk
+/migrations
